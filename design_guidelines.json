@@ -1,0 +1,58 @@
+{
+  "app_name": "Sattva & Samagri",
+  "tagline": "Pure Ritual Essentials & Sacred Artifacts",
+  "theme": "luxury-warm-ivory",
+  "colors": {
+    "primary": "#800020",
+    "primary_hover": "#600018",
+    "secondary": "#DAA520",
+    "accent": "#C28E00",
+    "background": "#FDFBF7",
+    "surface": "#F7F2EB",
+    "card_bg": "#FFFFFF",
+    "text_primary": "#2C221E",
+    "text_muted": "#6E6259",
+    "border": "#E6DCD0"
+  },
+  "typography": {
+    "heading_font": "Playfair Display, serif",
+    "body_font": "Plus Jakarta Sans, sans-serif"
+  },
+  "image_urls": {
+    "hero_banner": "https://images.unsplash.com/photo-1754277198657-c288797a30a7",
+    "puja_thali": "https://images.unsplash.com/photo-1761295908789-42feef309297",
+    "diya_lamp": "https://images.unsplash.com/photo-1587223757288-85e8402baf60",
+    "incense_samagri": "https://images.unsplash.com/photo-1552014359-e81c947ca502",
+    "rudraksha_mala": "https://images.unsplash.com/photo-1612704057720-e8f66bade6ca"
+  },
+  "components": [
+    "Navbar",
+    "HeroBanner",
+    "CategoryRibbon",
+    "ProductCard",
+    "ProductGrid",
+    "FilterSidebar",
+    "SearchModal",
+    "CartDrawer",
+    "WishlistDrawer",
+    "CheckoutModal",
+    "OrderConfirmation",
+    "UserAccountModal",
+    "OrderHistory",
+    "FestivalCollections",
+    "PujaKitsSection",
+    "Footer"
+  ],
+  "features": [
+    "35+ realistic Indian spiritual & puja samagri products with rich attributes",
+    "Advanced search with instant suggestions and category filters",
+    "Dynamic sorting by price, popularity, and purity rating",
+    "Interactive quantity, variant picker, and ritual guide tab",
+    "Live cart with discount codes and free samagri sample selection",
+    "Wishlist management with quick add-to-cart",
+    "Multi-step checkout with delivery scheduling, gift messaging, and dummy Razorpay payment gateway",
+    "Order tracking system with status updates and invoice download",
+    "User account dashboard with saved addresses, orders, and puja subscription management",
+    "Responsive mobile navigation and drawer flows"
+  ]
+}
