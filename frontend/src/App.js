@@ -22,7 +22,7 @@ const seeds = [
 ];
 const fallbackCollections = [{name:"Puja Samagri", slug:"puja-samagri", image:img("photo-1603006905003-be475563bc59")},{name:"Diyas & Lamps",slug:"diyas",image:img("photo-1587223757288-85e8402baf60")},{name:"Puja Kits",slug:"puja-kits",image:img("photo-1518709268805-4e9042af9f23")},{name:"Incense & Dhoop",slug:"incense",image:img("photo-1552014359-e81c947ca502")},{name:"Idols & Murtis",slug:"idols",image:img("photo-1577083552431-6e5fd01aa342")},{name:"Rudraksha & Mala",slug:"rudraksha",image:img("photo-1612704057720-e8f66bade6ca")}];
 const money = n => `₹${n.toLocaleString("en-IN")}`;
-const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
+const API = `${process.env.REACT_APP_BACKEND_URL || ""}/api`;
 const CatalogContext = createContext({ products: [], collections: fallbackCollections, loading: true, source: "shopify" });
 function useProducts(){return useContext(CatalogContext);}
 function useCollections(){const {collections}=useContext(CatalogContext);return collections;}
