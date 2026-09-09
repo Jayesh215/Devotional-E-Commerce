@@ -1,0 +1,45 @@
+mutation CreateSattvaProduct($product: ProductCreateInput!, $media: [CreateMediaInput!]) {
+  productCreate(product: $product, media: $media) {
+    product { id handle title status productType }
+    userErrors { field message }
+  }
+}
+
+mutation SetSattvaVariantPricing($productId: ID!, $variants: [ProductVariantsBulkInput!]!) {
+  productVariantsBulkCreate(productId: $productId, strategy: REMOVE_STANDALONE_VARIANT, variants: $variants) {
+    product { id }
+    productVariants { id price compareAtPrice inventoryItem { sku } }
+    userErrors { field message }
+  }
+}
+
+mutation CreateSattvaCollection($input: CollectionInput!) {
+  collectionCreate(input: $input) {
+    collection { id handle title }
+    userErrors { field message }
+  }
+}
+
+mutation AddProductsToCollection($id: ID!, $productIds: [ID!]!) {
+  collectionAddProducts(id: $id, productIds: $productIds) {
+    collection { id handle }
+    userErrors { field message }
+  }
+}
+
+mutation PublishSattvaCollection($id: ID!, $input: [PublicationInput!]!) {
+  publishablePublish(id: $id, input: $input) {
+    userErrors { field message }
+  }
+}
+
+query ShopPublications {
+  publications(first: 20) {
+    nodes {
+      id
+      catalog {
+        title
+      }
+    }
+  }
+}

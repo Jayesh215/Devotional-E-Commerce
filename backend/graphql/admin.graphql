@@ -1,0 +1,108 @@
+query AdminCatalog($first: Int!) {
+  products(first: $first) {
+    nodes {
+      id
+      handle
+      title
+      status
+      productType
+      tags
+      descriptionHtml
+      featuredMedia {
+        ... on MediaImage {
+          image { url }
+        }
+      }
+      media(first: 2) {
+        nodes {
+          ... on MediaImage {
+            image { url }
+          }
+        }
+      }
+      variants(first: 1) {
+        nodes {
+          id
+          sku
+          price
+          compareAtPrice
+          inventoryQuantity
+        }
+      }
+      material: metafield(namespace: "sattva", key: "material") { value }
+      size: metafield(namespace: "sattva", key: "size") { value }
+    }
+  }
+}
+
+query ShopPublications {
+  publications(first: 20) {
+    nodes {
+      id
+      name
+    }
+  }
+}
+
+query ShopLocations {
+  locations(first: 5) {
+    nodes {
+      id
+      name
+    }
+  }
+}
+
+query RecentOrders($first: Int!) {
+  orders(first: $first, sortKey: CREATED_AT, reverse: true) {
+    nodes {
+      id
+      name
+      createdAt
+      displayFinancialStatus
+      displayFulfillmentStatus
+      totalPriceSet {
+        shopMoney { amount }
+      }
+      lineItems(first: 5) {
+        nodes {
+          title
+          quantity
+        }
+      }
+    }
+  }
+}
+
+mutation UpdateSattvaProduct($product: ProductUpdateInput!) {
+  productUpdate(product: $product) {
+    product {
+      id
+      handle
+      title
+    }
+    userErrors {
+      field
+      message
+    }
+  }
+}
+
+mutation DeleteSattvaProduct($id: ID!) {
+  productDelete(input: { id: $id }) {
+    deletedProductId
+    userErrors {
+      field
+      message
+    }
+  }
+}
+
+mutation PublishSattvaProduct($id: ID!, $input: [PublicationInput!]!) {
+  publishablePublish(id: $id, input: $input) {
+    userErrors {
+      field
+      message
+    }
+  }
+}

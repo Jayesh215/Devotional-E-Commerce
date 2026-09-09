@@ -1,0 +1,11 @@
+{
+  "name": "devotional-e-commerce",
+  "private": true,
+  "scripts": {
+    "dev": "npm run start --prefix frontend",
+    "start": "npm run start --prefix frontend",
+    "build": "npm run build --prefix frontend",
+    "install:frontend": "npm install --prefix frontend --legacy-peer-deps",
+    "postinstall": "npm install --prefix frontend --legacy-peer-deps"
+  }
+}

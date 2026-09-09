@@ -1,0 +1,139 @@
+query CatalogProducts($first: Int!) {
+  products(first: $first) {
+    nodes {
+      id
+      handle
+      title
+      description
+      productType
+      tags
+      featuredImage { url altText }
+      images(first: 2) { nodes { url altText } }
+      priceRange { minVariantPrice { amount } }
+      compareAtPriceRange { minVariantPrice { amount } }
+      variants(first: 1) {
+        nodes {
+          id
+          sku
+          availableForSale
+          quantityAvailable
+          price { amount }
+          compareAtPrice { amount }
+        }
+      }
+      material: metafield(namespace: "sattva", key: "material") { value }
+      size: metafield(namespace: "sattva", key: "size") { value }
+    }
+  }
+}
+
+query ProductByHandle($handle: String!) {
+  product(handle: $handle) {
+    id
+    handle
+    title
+    description
+    productType
+    tags
+    featuredImage { url }
+    images(first: 2) { nodes { url } }
+    variants(first: 1) {
+      nodes {
+        id
+        sku
+        availableForSale
+        quantityAvailable
+        price { amount }
+        compareAtPrice { amount }
+      }
+    }
+    material: metafield(namespace: "sattva", key: "material") { value }
+    size: metafield(namespace: "sattva", key: "size") { value }
+  }
+}
+
+query SearchProducts($query: String!, $first: Int!) {
+  search(query: $query, first: $first, types: PRODUCT) {
+    nodes {
+      ... on Product {
+        id
+        handle
+        title
+        description
+        productType
+        tags
+        featuredImage { url }
+        images(first: 2) { nodes { url } }
+        variants(first: 1) {
+          nodes {
+            id
+            sku
+            availableForSale
+            quantityAvailable
+            price { amount }
+            compareAtPrice { amount }
+          }
+        }
+      }
+    }
+  }
+}
+
+query CatalogCollections($first: Int!) {
+  collections(first: $first) {
+    nodes {
+      id
+      handle
+      title
+      description
+      image { url altText }
+    }
+  }
+}
+
+query CollectionByHandle($handle: String!, $first: Int!) {
+  collection(handle: $handle) {
+    id
+    handle
+    title
+    description
+    image { url altText }
+    products(first: $first) {
+      nodes {
+        id
+        handle
+        title
+        description
+        productType
+        tags
+        featuredImage { url altText }
+        images(first: 2) { nodes { url altText } }
+        variants(first: 1) {
+          nodes {
+            id
+            sku
+            availableForSale
+            quantityAvailable
+            price { amount }
+            compareAtPrice { amount }
+          }
+        }
+        material: metafield(namespace: "sattva", key: "material") { value }
+        size: metafield(namespace: "sattva", key: "size") { value }
+      }
+    }
+  }
+}
+
+mutation CreateCheckoutCart($input: CartInput!) {
+  cartCreate(input: $input) {
+    cart {
+      id
+      checkoutUrl
+    }
+    userErrors {
+      field
+      message
+    }
+  }
+}
